@@ -32,6 +32,7 @@ binmode STDIN, ":utf8";
 
 my %opts = ();
 my %params = ();
+my %postfix_options_to_discard = ();
 
 
 # Parse the command line arguments and place them in the %opts hash.
@@ -43,6 +44,7 @@ sub parse_args {
                'f=s' => \$opts{'f'},
                'c=s' => \$opts{'c'},
                'b=s' => \$opts{'b'},
+               'oi'  => \$postfix_options_to_discard{'oi'},
                r => \$opts{'r'},
                help => \$opts{'h'}) or pod2usage(-exitval => 2);
     pod2usage(-exitstatus => 0, -verbose => 2) if ($opts{'h'});
